@@ -14,10 +14,10 @@ exports.checkID = (req, res, next, val) => {
   next();
 };
 exports.checkBody = (req, res, next) => {
-  if (typeof req.body !== 'object' || !req.body || req.body !== {}) {
+  if (!req.body.name || !req.body.price) {
     return res.status(404).json({
       status: 'fail',
-      message: 'Request Body not found',
+      message: 'Request Body has missing name or price property',
     });
   }
   next();

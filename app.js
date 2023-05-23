@@ -5,7 +5,11 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 app.use(express.json()); //middleware to store the request into the body
-app.use(morgan('dev'));
+// app.use(express.static(`${__dirname}/public/`)); //to show html files in the browser
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 //MIDDLE WARE
 //createing our custom middleware
